@@ -34,4 +34,5 @@ Di paling bawah ada form isi nama, nomor WA, sama pilih jurusan. Dan keliatan ad
 
 ---
 
-Intinya ini landing page yang dirancang buat **narik siswa baru tahun ajaran 2025/2026** 👋
+Intinya ini landing page yang dirancang buat **narik siswa baru tahun ajaran 2026-2027
+** 👋
