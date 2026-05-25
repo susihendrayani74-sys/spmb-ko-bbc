@@ -1,8 +1,3 @@
-Oke jadi foto ini tuh sebenernya adalah **desain landing page** buat sebuah sekolah SMK yang namanya **SMKKU**, lokasinya di Bandung.
-
-Ini kayak brosur digital gitu, tapi versi website. Isinya dari atas ke bawah:
-
----
 
 **Bagian atas (Hero Section)**
 Ada tulisan gede "Masa Depanmu Dimulai dari Pilihan Tepat" — ini basically ngajak calon siswa buat daftar. Ada 2 tombol, satu buat daftar gratis, satu buat lihat program. Terus ada stats kecil kayak 98% lulusan terserap kerja, akreditasi A, udah 12+ tahun berdiri, sama 2000+ alumni aktif.
