@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMK Budi Bakti Ciwidey - Penerimaan Siswa Baru 2025/2026</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B1A3E;
+      --blue: #1A4DB5;
+      --green: #50C878;
+      --light: #F5F8FF;
+      --gray: #6B7A99;
+      --white: #FFFFFF;
+      --accent: #FFD166;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--navy); overflow-x: hidden; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 5%; background: rgba(11,26,62,0.95); backdrop-filter: blur(12px); }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: var(--white); }
+    .nav-logo span { color: var(--green); }
+    .nav-cta { background: var(--green); color: var(--navy); padding: 0.6rem 1.5rem; border-radius: 50px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all 0.3s; }
+    .nav-cta:hover { background: var(--accent); }
+
+    /* HERO */
+    #hero { min-height: 100vh; background: linear-gradient(135deg, var(--navy) 0%, #0F2860 60%, #1A4DB5 100%); display: flex; align-items: center; justify-content: center; text-align: center; padding: 7rem 5% 4rem; position: relative; overflow: hidden; }
+    #hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(80,200,120,0.15) 0%, transparent 60%); }
+    .hero-badge { display: inline-block; background: rgba(80,200,120,0.15); border: 1px solid rgba(80,200,120,0.4); color: var(--green); padding: 0.4rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 500; margin-bottom: 1.5rem; animation: fadeUp 0.8s ease both; }
+    .hero-headline { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.1; color: var(--white); margin-bottom: 1.2rem; animation: fadeUp 0.8s 0.1s ease both; }
+    .hero-headline em { color: var(--green); font-style: normal; }
+    .hero-sub { font-size: clamp(1rem, 2vw, 1.2rem); color: rgba(255,255,255,0.75); max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.7; animation: fadeUp 0.8s 0.2s ease both; }
+    .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.8s 0.3s ease both; }
+    .btn-primary { background: var(--green); color: var(--navy); padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: all 0.3s; box-shadow: 0 8px 30px rgba(80,200,120,0.4); }
+    .btn-primary:hover { transform: translateY(-3px); }
+    .btn-secondary { background: transparent; color: var(--white); padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 600; font-size: 1rem; border: 2px solid rgba(255,255,255,0.3); text-decoration: none; transition: all 0.3s; }
+    .btn-secondary:hover { border-color: var(--white); }
+    .hero-stats { display: flex; gap: 2rem; justify-content: center; margin-top: 4rem; flex-wrap: wrap; animation: fadeUp 0.8s 0.4s ease both; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--white); }
+    .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 0.2rem; }
+
+    /* PROBLEM */
+    #problem { padding: 6rem 5%; background: var(--white); }
+    .section-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); margin-bottom: 1rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; line-height: 1.2; margin-bottom: 1.5rem; }
+    .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; max-width: 1100px; margin: 0 auto; }
+    .problem-cards { display: flex; flex-direction: column; gap: 1rem; }
+    .problem-card { background: #FFF5F5; border-left: 4px solid #FF6B6B; padding: 1.2rem 1.5rem; border-radius: 0 12px 12px 0; }
+    .problem-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .problem-card p { font-size: 0.9rem; color: var(--gray); line-height: 1.5; }
+    .solution-box { background: linear-gradient(135deg, var(--blue), var(--navy)); color: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 20px 60px rgba(26,77,181,0.3); }
+    .solution-box h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 1rem; }
+    .solution-box p { opacity: 0.85; line-height: 1.7; font-size: 0.95rem; }
+    .solution-check { display: flex; align-items: center; gap: 0.7rem; margin-top: 1.2rem; font-size: 0.9rem; }
+    .check-icon { width: 22px; height: 22px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.75rem; color: var(--navy); font-weight: 700; }
+
+    /* PROGRAMS */
+    #programs { padding: 6rem 5%; background: var(--light); text-align: center; }
+    .programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 3rem auto 0; }
+    .program-card { background: var(--white); border-radius: 20px; padding: 2rem; text-align: left; border: 2px solid transparent; transition: all 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .program-card:hover { border-color: var(--blue); transform: translateY(-6px); box-shadow: 0 16px 40px rgba(26,77,181,0.15); }
+    .program-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 1.2rem; }
+    .program-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .program-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
+    .program-tag { display: inline-block; margin-top: 1rem; background: var(--light); color: var(--blue); padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.78rem; font-weight: 600; }
+
+    /* PROOF */
+    #proof { padding: 6rem 5%; background: var(--navy); color: var(--white); text-align: center; }
+    #proof .section-label { color: var(--green); }
+    #proof .section-title { color: var(--white); }
+    .proof-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 900px; margin: 3rem auto; }
+    .proof-stat { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 2rem; }
+    .proof-num { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 900; color: var(--green); }
+    .proof-desc { font-size: 0.9rem; opacity: 0.65; margin-top: 0.5rem; }
+    .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto; }
+    .testimonial { background: rgba(255,255,255,0.07); border-radius: 16px; padding: 1.8rem; text-align: left; border: 1px solid rgba(255,255,255,0.1); }
+    .testimonial-text { font-size: 0.95rem; opacity: 0.85; line-height: 1.7; margin-bottom: 1.2rem; }
+    .testimonial-author { display: flex; align-items: center; gap: 0.8rem; }
+    .avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--green), var(--blue)); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; }
+    .author-name { font-weight: 600; font-size: 0.9rem; }
+    .author-class { font-size: 0.78rem; opacity: 0.6; }
+
+    /* CTA */
+    #cta { padding: 7rem 5%; background: linear-gradient(135deg, #F5F8FF 0%, #E8F0FF 100%); text-align: center; }
+    .cta-box { background: var(--white); border-radius: 24px; padding: 3.5rem; max-width: 600px; margin: 0 auto; box-shadow: 0 20px 60px rgba(26,77,181,0.12); border: 1px solid rgba(26,77,181,0.1); }
+    .cta-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 700; margin-bottom: 1rem; }
+    .cta-sub { color: var(--gray); line-height: 1.7; margin-bottom: 2rem; font-size: 0.95rem; }
+    .form-group { margin-bottom: 1rem; text-align: left; }
+    .form-group label { font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 0.4rem; }
+    .form-group input, .form-group select { width: 100%; padding: 0.85rem 1.2rem; border: 2px solid #E0E8FF; border-radius: 12px; font-family: inherit; font-size: 0.95rem; color: var(--navy); background: var(--light); transition: border-color 0.3s; outline: none; }
+    .form-group input:focus, .form-group select:focus { border-color: var(--blue); }
+    .btn-submit { width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--blue), var(--navy)); color: white; border: none; border-radius: 12px; font-family: inherit; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 0.5rem; transition: all 0.3s; box-shadow: 0 8px 24px rgba(26,77,181,0.35); }
+    .btn-submit:hover { transform: translateY(-2px); }
+    .form-note { font-size: 0.78rem; color: var(--gray); margin-top: 1rem; }
+
+    /* FOOTER */
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 2rem 5%; font-size: 0.85rem; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes floatHero { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+    @keyframes floatBadge { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
+    @keyframes floatNote { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+    @keyframes twinkle { 0%,100% { opacity:0.8; transform:scale(1); } 50% { opacity:0.3; transform:scale(0.85); } }
+
+    /* ALERT OVERLAY */
+    .alert-overlay { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; }
+    .alert-overlay.show { display: flex; }
+    .alert-box { background: white; border-radius: 20px; padding: 2.5rem; max-width: 400px; text-align: center; animation: fadeUp 0.4s ease; }
+    .alert-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .alert-box h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .alert-box p { color: var(--gray); margin-bottom: 1.5rem; }
+    .alert-close { background: var(--green); color: var(--navy); border: none; padding: 0.7rem 2rem; border-radius: 50px; font-weight: 700; cursor: pointer; font-size: 0.95rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .problem-grid { grid-template-columns: 1fr; }
+      .hero-illustration { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">SMK <span>Budi Bakti</span></div>
+  <a href="https://forms.google.com" target="_blank" class="nav-cta">Daftar Sekarang</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:3rem;max-width:1100px;margin:0 auto;width:100%;flex-wrap:wrap;">
+    <!-- LEFT: text -->
+    <div style="flex:1;min-width:280px;text-align:left;">
+      <div class="hero-badge">✦ Penerimaan Siswa Baru 2025/2026</div>
+      <h1 class="hero-headline">Masa Depanmu<br>Dimulai dari<br><em>Pilihan yang Tepat</em></h1>
+      <p class="hero-sub" style="margin-left:0;">Bergabunglah dengan ribuan lulusan sukses kami. Pilih program keahlian yang sesuai minatmu dan raih karir impian bersama <strong style="color:var(--green);">SMK Budi Bakti Ciwidey</strong>.</p>
+      <div class="hero-ctas" style="justify-content:flex-start;">
+        <a href="https://forms.google.com" target="_blank" class="btn-primary">Daftar Sekarang — Gratis</a>
+        <a href="#programs" class="btn-secondary">Lihat Program Keahlian</a>
+      </div>
+      <div class="hero-stats" style="justify-content:flex-start;margin-top:3rem;">
+        <div class="stat-item"><div class="stat-num">98%</div><div class="stat-label">Lulusan Terserap Kerja</div></div>
+        <div class="stat-item"><div class="stat-num">A</div><div class="stat-label">Akreditasi BAN-S/M</div></div>
+        <div class="stat-item"><div class="stat-num">12+</div><div class="stat-label">Tahun Berdiri</div></div>
+        <div class="stat-item"><div class="stat-num">2.000+</div><div class="stat-label">Alumni Aktif</div></div>
+      </div>
+    </div>
+    <!-- RIGHT: hero illustration -->
+    <div class="hero-illustration" style="flex:0 0 420px;max-width:100%;">
+      <svg viewBox="0 0 420 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;filter:drop-shadow(0 30px 60px rgba(0,0,0,0.4));">
+        <!-- Floating card: laptop / screen -->
+        <g class="float-hero" style="animation:floatHero 4s ease-in-out infinite;">
+          <rect x="50" y="40" width="320" height="210" rx="18" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+          <rect x="50" y="40" width="320" height="38" rx="18" fill="rgba(255,255,255,0.1)"/>
+          <rect x="50" y="60" width="320" height="18" fill="rgba(255,255,255,0.1)"/>
+          <!-- Traffic lights -->
+          <circle cx="76" cy="59" r="5" fill="#FF6B6B" opacity="0.9"/>
+          <circle cx="94" cy="59" r="5" fill="#FFD166" opacity="0.9"/>
+          <circle cx="112" cy="59" r="5" fill="#50C878" opacity="0.9"/>
+          <!-- Browser bar -->
+          <rect x="130" y="51" width="180" height="16" rx="8" fill="rgba(255,255,255,0.12)"/>
+          <text x="146" y="63" font-size="8" fill="rgba(255,255,255,0.5)" font-family="DM Sans,sans-serif">smkbudibakti.sch.id/daftar</text>
+          <!-- Screen content: dashboard mockup -->
+          <rect x="66" y="90" width="288" height="148" rx="6" fill="rgba(11,26,62,0.6)"/>
+          <!-- Sidebar -->
+          <rect x="66" y="90" width="62" height="148" rx="0" fill="rgba(26,77,181,0.5)"/>
+          <rect x="72" y="100" width="50" height="8" rx="4" fill="rgba(255,255,255,0.15)"/>
+          <rect x="72" y="114" width="40" height="6" rx="3" fill="rgba(80,200,120,0.7)"/>
+          <rect x="72" y="126" width="44" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
+          <rect x="72" y="138" width="38" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
+          <rect x="72" y="150" width="44" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
+          <rect x="72" y="162" width="36" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
+          <!-- Main content area -->
+          <rect x="138" y="98" width="200" height="16" rx="4" fill="rgba(255,255,255,0.1)"/>
+          <text x="142" y="110" font-size="9" fill="rgba(255,255,255,0.7)" font-family="DM Sans,sans-serif" font-weight="600">Dashboard Pendaftaran</text>
+          <!-- Progress bar -->
+          <rect x="138" y="120" width="200" height="6" rx="3" fill="rgba(255,255,255,0.08)"/>
+          <rect x="138" y="120" width="140" height="6" rx="3" fill="#50C878"/>
+          <text x="138" y="135" font-size="7.5" fill="rgba(255,255,255,0.5)" font-family="DM Sans,sans-serif">Progres Pendaftaran 70%</text>
+          <!-- Mini stat pills -->
+          <rect x="138" y="142" width="58" height="28" rx="8" fill="rgba(80,200,120,0.15)" stroke="rgba(80,200,120,0.3)" stroke-width="1"/>
+          <text x="154" y="153" font-size="8" fill="#50C878" font-family="DM Sans,sans-serif" font-weight="700" text-anchor="middle">98%</text>
+          <text x="154" y="163" font-size="6" fill="rgba(255,255,255,0.4)" font-family="DM Sans,sans-serif" text-anchor="middle">Lulusan</text>
+          <rect x="204" y="142" width="58" height="28" rx="8" fill="rgba(255,209,102,0.12)" stroke="rgba(255,209,102,0.3)" stroke-width="1"/>
+          <text x="220" y="153" font-size="8" fill="#FFD166" font-family="DM Sans,sans-serif" font-weight="700" text-anchor="middle">50+</text>
+          <text x="220" y="163" font-size="6" fill="rgba(255,255,255,0.4)" font-family="DM Sans,sans-serif" text-anchor="middle">Mitra</text>
+          <rect x="270" y="142" width="58" height="28" rx="8" fill="rgba(26,77,181,0.3)" stroke="rgba(26,77,181,0.5)" stroke-width="1"/>
+          <text x="286" y="153" font-size="8" fill="#7EABFF" font-family="DM Sans,sans-serif" font-weight="700" text-anchor="middle">A</text>
+          <text x="286" y="163" font-size="6" fill="rgba(255,255,255,0.4)" font-family="DM Sans,sans-serif" text-anchor="middle">Akreditasi</text>
+          <!-- Chart bars -->
+          <rect x="138" y="186" width="12" height="32" rx="3" fill="rgba(26,77,181,0.5)"/>
+          <rect x="154" y="176" width="12" height="42" rx="3" fill="rgba(26,77,181,0.7)"/>
+          <rect x="170" y="181" width="12" height="37" rx="3" fill="rgba(26,77,181,0.5)"/>
+          <rect x="186" y="168" width="12" height="50" rx="3" fill="#50C878"/>
+          <rect x="202" y="175" width="12" height="43" rx="3" fill="rgba(26,77,181,0.5)"/>
+          <rect x="218" y="172" width="12" height="46" rx="3" fill="rgba(26,77,181,0.7)"/>
+        </g>
+
+        <!-- Floating badge: accepted -->
+        <g style="animation:floatBadge 3.5s 0.5s ease-in-out infinite;">
+          <rect x="270" y="220" width="130" height="50" rx="14" fill="white" style="filter:drop-shadow(0 10px 24px rgba(0,0,0,0.25));"/>
+          <circle cx="293" cy="245" r="12" fill="#50C878" opacity="0.9"/>
+          <text x="293" y="249" font-size="12" fill="white" text-anchor="middle" font-weight="700">✓</text>
+          <text x="312" y="239" font-size="8.5" fill="#0B1A3E" font-family="DM Sans,sans-serif" font-weight="700">Diterima!</text>
+          <text x="312" y="252" font-size="7.5" fill="#6B7A99" font-family="DM Sans,sans-serif">Program PPLG 2025</text>
+        </g>
+
+        <!-- Floating badge: notification -->
+        <g style="animation:floatNote 4s 1s ease-in-out infinite;">
+          <rect x="18" y="195" width="120" height="48" rx="14" fill="white" style="filter:drop-shadow(0 10px 24px rgba(0,0,0,0.2));"/>
+          <circle cx="38" cy="219" r="11" fill="#1A4DB5" opacity="0.9"/>
+          <text x="38" y="223" font-size="10" fill="white" text-anchor="middle">🔔</text>
+          <text x="56" y="213" font-size="7.5" fill="#0B1A3E" font-family="DM Sans,sans-serif" font-weight="700">Pendaftaran</text>
+          <text x="56" y="224" font-size="7" fill="#6B7A99" font-family="DM Sans,sans-serif">Dibuka Sekarang!</text>
+          <text x="56" y="235" font-size="6.5" fill="#50C878" font-family="DM Sans,sans-serif" font-weight="600">2.000+ sudah daftar</text>
+        </g>
+
+        <!-- Stars / sparkles decoration -->
+        <g fill="#FFD166" opacity="0.8">
+          <polygon points="30,50 32,44 34,50 40,52 34,54 32,60 30,54 24,52" style="animation:twinkle 2s 0s infinite;"/>
+          <polygon points="390,90 391.5,86 393,90 397,91.5 393,93 391.5,97 390,93 386,91.5" style="animation:twinkle 2s 0.7s infinite;" transform="scale(0.8) translate(90,30)"/>
+        </g>
+        <circle cx="400" cy="150" r="4" fill="rgba(80,200,120,0.5)" style="animation:twinkle 2.5s 1s infinite;"/>
+        <circle cx="20" cy="130" r="3" fill="rgba(255,209,102,0.5)" style="animation:twinkle 2.5s 0.3s infinite;"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="problem-grid">
+    <div>
+      <p class="section-label">Masalah yang Sering Dihadapi</p>
+      <h2 class="section-title">Khawatir Pilih Jurusan yang Salah?</h2>
+      <div class="problem-cards">
+        <div class="problem-card"><h4>😰 Bingung pilih jurusan</h4><p>Terlalu banyak pilihan tanpa panduan yang jelas membuat calon siswa bimbang.</p></div>
+        <div class="problem-card"><h4>😟 Takut tidak dapat pekerjaan</h4><p>Kekhawatiran apakah jurusan yang dipilih akan relevan di dunia kerja.</p></div>
+        <div class="problem-card"><h4>😕 Tidak tahu kualitas sekolah</h4><p>Sulit menilai kualitas fasilitas dan kompetensi pengajar dari luar.</p></div>
+      </div>
+    </div>
+    <div class="solution-box">
+      <div style="text-align:center;margin-bottom:1.2rem;">
+        <svg viewBox="0 0 280 110" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;">
+          <rect x="90" y="50" width="100" height="55" rx="4" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+          <polygon points="90,50 140,18 190,50" fill="rgba(80,200,120,0.4)" stroke="rgba(80,200,120,0.6)" stroke-width="1"/>
+          <rect x="125" y="78" width="30" height="27" rx="3" fill="rgba(255,255,255,0.15)"/>
+          <rect x="98" y="60" width="20" height="14" rx="3" fill="rgba(255,209,102,0.4)"/>
+          <rect x="162" y="60" width="20" height="14" rx="3" fill="rgba(255,209,102,0.4)"/>
+          <line x1="140" y1="5" x2="140" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <polygon points="140,6 156,12 140,18" fill="#50C878" opacity="0.9"/>
+          <circle cx="60" cy="40" r="3" fill="#FFD166" opacity="0.7" style="animation:twinkle 2s 0s infinite;"/>
+          <circle cx="220" cy="35" r="2.5" fill="#50C878" opacity="0.7" style="animation:twinkle 2s 0.5s infinite;"/>
+          <circle cx="45" cy="75" r="2" fill="#FFD166" opacity="0.5" style="animation:twinkle 2.5s 1s infinite;"/>
+          <circle cx="235" cy="70" r="2" fill="#50C878" opacity="0.5" style="animation:twinkle 2.5s 0.3s infinite;"/>
+          <g style="animation:floatBadge 3s 0s ease-in-out infinite;">
+            <rect x="8" y="55" width="50" height="22" rx="8" fill="rgba(80,200,120,0.25)" stroke="rgba(80,200,120,0.4)" stroke-width="1"/>
+            <text x="33" y="64" font-size="6.5" fill="#50C878" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="700">✓ Akreditasi A</text>
+            <text x="33" y="73" font-size="5.5" fill="rgba(255,255,255,0.5)" text-anchor="middle" font-family="DM Sans,sans-serif">BAN-S/M</text>
+          </g>
+          <g style="animation:floatNote 3.5s 0.7s ease-in-out infinite;">
+            <rect x="222" y="50" width="50" height="22" rx="8" fill="rgba(255,209,102,0.2)" stroke="rgba(255,209,102,0.4)" stroke-width="1"/>
+            <text x="247" y="59" font-size="6.5" fill="#FFD166" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="700">50+ Mitra</text>
+            <text x="247" y="68" font-size="5.5" fill="rgba(255,255,255,0.5)" text-anchor="middle" font-family="DM Sans,sans-serif">Industri</text>
+          </g>
+        </svg>
+      </div>
+      <h3>Kami Hadir sebagai Solusi</h3>
+      <p>SMK Budi Bakti Ciwidey dirancang khusus untuk memastikan setiap siswa mendapat pendidikan vokasi yang relevan, praktis, dan siap kerja.</p>
+      <div class="solution-check"><div class="check-icon">✓</div><span>Konseling karir gratis sebelum mendaftar</span></div>
+      <div class="solution-check"><div class="check-icon">✓</div><span>Kerjasama dengan 50+ perusahaan mitra</span></div>
+      <div class="solution-check"><div class="check-icon">✓</div><span>Lab dan fasilitas praktik lengkap</span></div>
+      <div class="solution-check"><div class="check-icon">✓</div><span>Guru berpengalaman industri</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <p class="section-label">Program Keahlian</p>
+  <h2 class="section-title">Pilih Jurusan Sesuai Passionmu</h2>
+  <div class="programs-grid">
+    <!-- PPLG -->
+    <div class="program-card">
+      <div style="text-align:center;margin-bottom:1rem;">
+        <svg viewBox="0 0 200 110" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:200px;">
+          <rect x="30" y="15" width="140" height="90" rx="10" fill="#EEF4FF" stroke="#C7D9FF" stroke-width="1.5"/>
+          <rect x="30" y="15" width="140" height="26" rx="10" fill="#1A4DB5" opacity="0.8"/>
+          <rect x="30" y="29" width="140" height="12" fill="#1A4DB5" opacity="0.8"/>
+          <circle cx="46" cy="28" r="4" fill="#FF6B6B" opacity="0.8"/>
+          <circle cx="58" cy="28" r="4" fill="#FFD166" opacity="0.8"/>
+          <circle cx="70" cy="28" r="4" fill="#50C878" opacity="0.8"/>
+          <rect x="44" y="52" width="30" height="5" rx="2.5" fill="#1A4DB5" opacity="0.6"/>
+          <rect x="78" y="52" width="50" height="5" rx="2.5" fill="#50C878" opacity="0.7"/>
+          <rect x="50" y="63" width="60" height="5" rx="2.5" fill="#1A4DB5" opacity="0.4"/>
+          <rect x="44" y="74" width="40" height="5" rx="2.5" fill="#FFD166" opacity="0.6"/>
+          <rect x="88" y="74" width="30" height="5" rx="2.5" fill="#1A4DB5" opacity="0.4"/>
+          <rect x="50" y="85" width="70" height="5" rx="2.5" fill="#50C878" opacity="0.5"/>
+          <rect x="125" y="85" width="3" height="7" rx="1" fill="#1A4DB5" opacity="0.9" style="animation:twinkle 1s step-end infinite;"/>
+        </svg>
+      </div>
+      <div class="program-icon" style="background:#EEF4FF;">🖥️</div>
+      <h3>Pengembangan Perangkat Lunak &amp; Game (PPLG)</h3>
+      <p>Pelajari pemrograman web, mobile, dan game development menggunakan teknologi terkini yang dipakai industri.</p>
+      <span class="program-tag">Coding · Web · Mobile · Game</span>
+    </div>
+    <!-- DKV -->
+    <div class="program-card">
+      <div style="text-align:center;margin-bottom:1rem;">
+        <svg viewBox="0 0 200 110" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:200px;">
+          <rect x="25" y="12" width="150" height="86" rx="10" fill="#FFF5EA" stroke="#FFD9B0" stroke-width="1.5"/>
+          <circle cx="50" cy="70" r="14" fill="#FF6B6B" opacity="0.8"/>
+          <circle cx="72" cy="60" r="14" fill="#FFD166" opacity="0.8"/>
+          <circle cx="94" cy="70" r="14" fill="#50C878" opacity="0.8"/>
+          <circle cx="116" cy="60" r="14" fill="#1A4DB5" opacity="0.7"/>
+          <circle cx="138" cy="70" r="14" fill="#C77DFF" opacity="0.7"/>
+          <rect x="55" y="22" width="90" height="30" rx="6" fill="white" opacity="0.9"/>
+          <rect x="63" y="29" width="40" height="5" rx="2.5" fill="#1A4DB5" opacity="0.5"/>
+          <rect x="63" y="38" width="60" height="4" rx="2" fill="#FFD166" opacity="0.7"/>
+          <g transform="translate(120,18) rotate(-30)">
+            <rect width="8" height="22" rx="2" fill="#C77DFF" opacity="0.8"/>
+            <polygon points="0,22 8,22 4,30" fill="#8B00FF" opacity="0.6"/>
+          </g>
+        </svg>
+      </div>
+      <div class="program-icon" style="background:#FFF5EA;">🎨</div>
+      <h3>Desain Komunikasi Visual (DKV)</h3>
+      <p>Kuasai seni visual, branding, ilustrasi digital, dan desain grafis untuk media cetak maupun digital.</p>
+      <span class="program-tag">Desain · Ilustrasi · Branding</span>
+    </div>
+    <!-- BRP -->
+    <div class="program-card">
+      <div style="text-align:center;margin-bottom:1rem;">
+        <svg viewBox="0 0 200 110" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:200px;">
+          <rect x="25" y="12" width="150" height="86" rx="10" fill="#F0FFF4" stroke="#B0E8C0" stroke-width="1.5"/>
+          <rect x="45" y="75" width="18" height="20" rx="3" fill="#1A4DB5" opacity="0.5"/>
+          <rect x="70" y="58" width="18" height="37" rx="3" fill="#1A4DB5" opacity="0.7"/>
+          <rect x="95" y="45" width="18" height="50" rx="3" fill="#50C878" opacity="0.9"/>
+          <rect x="120" y="52" width="18" height="43" rx="3" fill="#1A4DB5" opacity="0.6"/>
+          <rect x="145" y="40" width="18" height="55" rx="3" fill="#50C878" opacity="0.8"/>
+          <polyline points="54,70 79,55 104,40 129,48 154,35" fill="none" stroke="#FFD166" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+          <circle cx="154" cy="35" r="4" fill="#FFD166" opacity="0.9"/>
+          <rect x="130" y="18" width="42" height="20" rx="8" fill="rgba(80,200,120,0.2)" stroke="rgba(80,200,120,0.4)" stroke-width="1"/>
+          <text x="151" y="30" font-size="8" fill="#50C878" font-family="DM Sans,sans-serif" font-weight="700" text-anchor="middle">↑ 98%</text>
+          <line x1="40" y1="95" x2="170" y2="95" stroke="#B0E8C0" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="program-icon" style="background:#F0FFF4;">⚙️</div>
+      <h3>Bisnis &amp; Ritel Profesional (BRP)</h3>
+      <p>Pelajari manajemen bisnis, pemasaran digital, dan keterampilan wirausaha untuk siap terjun ke dunia bisnis.</p>
+      <span class="program-tag">Bisnis · Marketing · Wirausaha</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section id="proof">
+  <div style="text-align:center;margin-bottom:2rem;">
+    <svg viewBox="0 0 800 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:800px;">
+      <g transform="translate(340,10)">
+        <rect x="40" y="55" width="40" height="8" rx="4" fill="rgba(255,209,102,0.4)"/>
+        <rect x="46" y="63" width="28" height="6" rx="3" fill="rgba(255,209,102,0.3)"/>
+        <path d="M50,10 Q50,55 60,55 Q70,55 70,10 Z" fill="#FFD166" opacity="0.8"/>
+        <path d="M50,10 Q35,10 35,28 Q35,46 50,50 Q50,55 60,55 Q70,55 70,50 Q85,46 85,28 Q85,10 70,10 Z" fill="#FFD166" opacity="0.9"/>
+        <path d="M50,28 Q42,28 42,36 Q42,44 50,46" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="60" cy="8" r="6" fill="#FFD166" opacity="0.8"/>
+        <text x="60" y="12" font-size="8" fill="white" text-anchor="middle" font-weight="900">★</text>
+      </g>
+      <line x1="0" y1="60" x2="340" y2="60" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="6,4"/>
+      <line x1="460" y1="60" x2="800" y2="60" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="6,4"/>
+      <g style="animation:floatBadge 3.5s ease-in-out infinite;">
+        <rect x="60" y="30" width="130" height="36" rx="12" fill="rgba(80,200,120,0.12)" stroke="rgba(80,200,120,0.3)" stroke-width="1"/>
+        <text x="125" y="44" font-size="9" fill="#50C878" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="700">🎓 2.000+ Alumni Sukses</text>
+        <text x="125" y="58" font-size="8" fill="rgba(255,255,255,0.4)" text-anchor="middle" font-family="DM Sans,sans-serif">Tersebar di seluruh Indonesia</text>
+      </g>
+      <g style="animation:floatNote 4s 0.8s ease-in-out infinite;">
+        <rect x="610" y="30" width="130" height="36" rx="12" fill="rgba(255,209,102,0.1)" stroke="rgba(255,209,102,0.3)" stroke-width="1"/>
+        <text x="675" y="44" font-size="9" fill="#FFD166" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="700">⭐ Rating 4.9/5.0</text>
+        <text x="675" y="58" font-size="8" fill="rgba(255,255,255,0.4)" text-anchor="middle" font-family="DM Sans,sans-serif">dari 500+ ulasan orang tua</text>
+      </g>
+    </svg>
+  </div>
+  <p class="section-label">Kepercayaan &amp; Pencapaian</p>
+  <h2 class="section-title">Angka yang Bicara Sendiri</h2>
+  <div class="proof-stats">
+    <div class="proof-stat">
+      <svg viewBox="0 0 60 40" style="width:60px;margin:0 auto 0.5rem;display:block;">
+        <circle cx="30" cy="20" r="18" fill="rgba(80,200,120,0.1)" stroke="rgba(80,200,120,0.3)" stroke-width="1.5"/>
+        <path d="M20,22 L27,30 L42,14" stroke="#50C878" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <div class="proof-num">98%</div><div class="proof-desc">Tingkat penyerapan kerja lulusan dalam 6 bulan</div>
+    </div>
+    <div class="proof-stat">
+      <svg viewBox="0 0 60 40" style="width:60px;margin:0 auto 0.5rem;display:block;">
+        <circle cx="30" cy="20" r="18" fill="rgba(255,209,102,0.1)" stroke="rgba(255,209,102,0.3)" stroke-width="1.5"/>
+        <text x="30" y="25" font-size="14" text-anchor="middle" fill="#FFD166" font-weight="900">🤝</text>
+      </svg>
+      <div class="proof-num">50+</div><div class="proof-desc">Perusahaan mitra untuk magang dan rekrutmen</div>
+    </div>
+    <div class="proof-stat">
+      <svg viewBox="0 0 60 40" style="width:60px;margin:0 auto 0.5rem;display:block;">
+        <circle cx="30" cy="20" r="18" fill="rgba(26,77,181,0.2)" stroke="rgba(26,77,181,0.4)" stroke-width="1.5"/>
+        <text x="30" y="25" font-size="14" text-anchor="middle" fill="#7EABFF" font-weight="900">🏅</text>
+      </svg>
+      <div class="proof-num">A</div><div class="proof-desc">Akreditasi resmi dari BAN-S/M</div>
+    </div>
+  </div>
+  <div class="testimonials">
+    <div class="testimonial">
+      <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem;">
+        <svg viewBox="0 0 44 44" width="44" height="44" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+          <circle cx="22" cy="22" r="22" fill="url(#grad1)"/>
+          <defs><linearGradient id="grad1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#50C878"/><stop offset="100%" stop-color="#1A4DB5"/></linearGradient></defs>
+          <circle cx="22" cy="17" r="7" fill="rgba(255,255,255,0.9)"/>
+          <ellipse cx="22" cy="36" rx="12" ry="8" fill="rgba(255,255,255,0.9)"/>
+          <text x="22" y="21" font-size="8" text-anchor="middle" fill="#1A4DB5" font-weight="700" font-family="DM Sans,sans-serif">RA</text>
+        </svg>
+        <div>
+          <div style="font-weight:600;font-size:0.9rem;color:white;">Rizky Aditya</div>
+          <div style="font-size:0.78rem;opacity:0.6;display:flex;align-items:center;gap:4px;">
+            <span style="background:rgba(80,200,120,0.2);color:#50C878;padding:1px 6px;border-radius:50px;font-size:0.7rem;font-weight:600;">PPLG</span>
+            Alumni · Angkatan 2023
+          </div>
+        </div>
+        <div style="margin-left:auto;color:#FFD166;font-size:0.85rem;">★★★★★</div>
+      </div>
+      <p class="testimonial-text">"Setelah lulus dari PPLG, saya langsung diterima kerja sebagai developer di startup Bandung. Materinya sangat relevan dengan kebutuhan industri!"</p>
+    </div>
+    <div class="testimonial">
+      <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem;">
+        <svg viewBox="0 0 44 44" width="44" height="44" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+          <circle cx="22" cy="22" r="22" fill="url(#grad2)"/>
+          <defs><linearGradient id="grad2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#C77DFF"/><stop offset="100%" stop-color="#FF6B9D"/></linearGradient></defs>
+          <circle cx="22" cy="17" r="7" fill="rgba(255,255,255,0.9)"/>
+          <ellipse cx="22" cy="36" rx="12" ry="8" fill="rgba(255,255,255,0.9)"/>
+          <text x="22" y="21" font-size="8" text-anchor="middle" fill="#C77DFF" font-weight="700" font-family="DM Sans,sans-serif">SM</text>
+        </svg>
+        <div>
+          <div style="font-weight:600;font-size:0.9rem;color:white;">Sari Maharani</div>
+          <div style="font-size:0.78rem;opacity:0.6;display:flex;align-items:center;gap:4px;">
+            <span style="background:rgba(199,125,255,0.2);color:#C77DFF;padding:1px 6px;border-radius:50px;font-size:0.7rem;font-weight:600;">DKV</span>
+            Alumni · Angkatan 2022
+          </div>
+        </div>
+        <div style="margin-left:auto;color:#FFD166;font-size:0.85rem;">★★★★★</div>
+      </div>
+      <p class="testimonial-text">"DKV di sini benar-benar membuka wawasan saya soal dunia desain. Portofolio yang dibangun selama sekolah langsung bisa dipamerkan ke klien."</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / FORM -->
+<section id="cta">
+  <div class="cta-box">
+    <h2 class="cta-title">Daftar Sekarang, Sebelum Kuota Penuh!</h2>
+    <p class="cta-sub">Isi formulir pendaftaran online kami. Tim kami akan menghubungimu dalam 1x24 jam untuk proses selanjutnya.</p>
+
+    <!-- Google Form Button -->
+    <a href="https://forms.google.com" target="_blank" class="btn-submit" style="display:block;text-decoration:none;text-align:center;margin-bottom:1.2rem;">
+      📋 Isi Formulir Pendaftaran Online →
+    </a>
+
+    <!-- Divider -->
+    <div style="display:flex;align-items:center;gap:1rem;margin:1.5rem 0;">
+      <div style="flex:1;height:1px;background:#E0E8FF;"></div>
+      <span style="font-size:0.8rem;color:var(--gray);font-weight:500;">atau hubungi kami</span>
+      <div style="flex:1;height:1px;background:#E0E8FF;"></div>
+    </div>
+
+    <!-- WhatsApp & Location buttons -->
+    <div style="display:flex;gap:0.8rem;flex-wrap:wrap;">
+      <a href="https://wa.me/085285648525" target="_blank" style="flex:1;min-width:140px;display:flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.85rem 1rem;background:#25D366;color:white;border-radius:12px;font-weight:600;font-size:0.9rem;text-decoration:none;transition:all 0.3s;box-shadow:0 4px 14px rgba(37,211,102,0.3);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Kami
+      </a>
+      <a href="https://maps.google.com/?q=SMK+Budi+Bakti+Ciwidey" target="_blank" style="flex:1;min-width:140px;display:flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.85rem 1rem;background:var(--light);color:var(--navy);border:2px solid #E0E8FF;border-radius:12px;font-weight:600;font-size:0.9rem;text-decoration:none;transition:all 0.3s;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Lihat Lokasi
+      </a>
+    </div>
+
+    <p class="form-note" style="margin-top:1.2rem;">🔒 Data kamu aman. Kami tidak akan menyebarkan informasi pribadimu.</p>
+  </div>
+</section>
+
+<!-- LOKASI -->
+<section style="padding:5rem 5%;background:var(--white);">
+  <div style="max-width:900px;margin:0 auto;text-align:center;">
+    <p class="section-label">Lokasi Kami</p>
+    <h2 class="section-title">Temukan SMK Budi Bakti Ciwidey</h2>
+    <p style="color:var(--gray);margin-bottom:2.5rem;font-size:0.95rem;">Kami berlokasi di Ciwidey, Kabupaten Bandung — mudah dijangkau dari berbagai arah.</p>
+
+    <!-- Map embed placeholder + link -->
+    <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(26,77,181,0.12);border:2px solid rgba(26,77,181,0.1);">
+      <iframe
+        src="https://maps.app.goo.gl/7iMVyVJciGhCkUrM7"
+        width="100%" height="360" style="border:0;display:block;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+      <!-- Overlay CTA -->
+      <div style="position:absolute;bottom:1.2rem;left:50%;transform:translateX(-50%);background:white;border-radius:50px;padding:0.65rem 1.6rem;box-shadow:0 8px 24px rgba(0,0,0,0.15);display:flex;align-items:center;gap:0.6rem;white-space:nowrap;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <a href="https://maps.google.com/?q=SMK+Budi+Bakti+Ciwidey" target="_blank" style="color:var(--navy);font-weight:700;font-size:0.88rem;text-decoration:none;">Buka di Google Maps</a>
+      </div>
+    </div>
+
+    <!-- Info boxes -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2rem;">
+      <div style="background:var(--light);border-radius:14px;padding:1.2rem;text-align:left;">
+        <div style="font-size:1.3rem;margin-bottom:0.4rem;">📍</div>
+        <div style="font-weight:700;font-size:0.88rem;margin-bottom:0.2rem;">Alamat</div>
+        <div style="font-size:0.82rem;color:var(--gray);line-height:1.5;">Jl Babakan Tiga 82 40973 ,<br>Bandung, Jawa Barat</div>
+      </div>
+      <div style="background:var(--light);border-radius:14px;padding:1.2rem;text-align:left;">
+        <div style="font-size:1.3rem;margin-bottom:0.4rem;">🕐</div>
+        <div style="font-weight:700;font-size:0.88rem;margin-bottom:0.2rem;">Jam Operasional</div>
+        <div style="font-size:0.82rem;color:var(--gray);line-height:1.5;">Senin – sabtu: 09.00 – 16.00<br</div>
+      </div>
+      <div style="background:var(--light);border-radius:14px;padding:1.2rem;text-align:left;">
+        <div style="font-size:1.3rem;margin-bottom:0.4rem;">📞</div>
+        <div style="font-weight:700;font-size:0.88rem;margin-bottom:0.2rem;">Kontak</div>
+        <div style="font-size:0.82rem;color:var(--gray);line-height:1.5;">085285648525<br>info@smkbudibakti.sch.id</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="background:var(--navy);color:rgba(255,255,255,0.5);text-align:center;padding:2.5rem 5%;font-size:0.85rem;">
+  <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:white;margin-bottom:0.5rem;">SMK <span style="color:var(--green);">Budi Bakti</span> Ciwidey</div>
+  <p>Jl Babakan Tiga 82 40973 Bandung Jawa Barat</p>
+  <p style="margin-top:0.4rem;">© 2025 SMK Budi Bakti Ciwidey. All rights reserved.</p>
+</footer>
+
+<!-- SUCCESS ALERT (kept for potential reuse) -->
+<div class="alert-overlay" id="alertOverlay" style="display:none;">
+  <div class="alert-box">
+    <div class="alert-icon">🎉</div>
+    <h3>Pendaftaran Berhasil!</h3>
+    <p>Terima kasih telah mendaftar. Tim kami akan menghubungimu dalam 1x24 jam.</p>
+    <button class="alert-close" onclick="closeAlert()">Tutup</button>
+  </div>
+</div>
+
+<script>
+function closeAlert() {
+  document.getElementById('alertOverlay').classList.remove('show');
+}
+
+// Scroll reveal animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = 1;
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.program-card, .proof-stat, .testimonial').forEach(el => {
+  el.style.opacity = 0;
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
